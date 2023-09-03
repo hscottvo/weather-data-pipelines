@@ -1,0 +1,38 @@
+[2023-08-07T05:24:49.818+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: 7_da_temps.hit_api scheduled__2023-08-06T05:24:49.057537+00:00 [queued]>
+[2023-08-07T05:24:49.823+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: 7_da_temps.hit_api scheduled__2023-08-06T05:24:49.057537+00:00 [queued]>
+[2023-08-07T05:24:49.823+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-08-07T05:24:49.830+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): hit_api> on 2023-08-06 05:24:49.057537+00:00
+[2023-08-07T05:24:49.835+0000] {standard_task_runner.py:57} INFO - Started process 5528 to run task
+[2023-08-07T05:24:49.839+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', '7_da_temps', 'hit_api', 'scheduled__2023-08-06T05:24:49.057537+00:00', '--job-id', '45', '--raw', '--subdir', 'DAGS_FOLDER/7_da_weather/7_da_temps.py', '--cfg-path', '/tmp/tmpd_1eu3lm']
+[2023-08-07T05:24:49.844+0000] {standard_task_runner.py:85} INFO - Job 45: Subtask hit_api
+[2023-08-07T05:24:49.880+0000] {task_command.py:410} INFO - Running <TaskInstance: 7_da_temps.hit_api scheduled__2023-08-06T05:24:49.057537+00:00 [running]> on host ed9f4b70d884
+[2023-08-07T05:24:49.927+0000] {taskinstance.py:1545} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='scott' AIRFLOW_CTX_DAG_ID='7_da_temps' AIRFLOW_CTX_TASK_ID='hit_api' AIRFLOW_CTX_EXECUTION_DATE='2023-08-06T05:24:49.057537+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-08-06T05:24:49.057537+00:00'
+[2023-08-07T05:24:51.226+0000] {logging_mixin.py:150} INFO - <pyowm.weatherapi25.one_call.OneCall - lat=34.0978, lon=-117.886, retrieval_time=1691385890>
+[2023-08-07T05:24:51.229+0000] {logging_mixin.py:150} INFO - {'temp': 90.46, 'feels_like': 89.49}
+[2023-08-07T05:24:51.230+0000] {logging_mixin.py:150} INFO - {'temp': 88.75, 'feels_like': 88.09}
+[2023-08-07T05:24:51.231+0000] {logging_mixin.py:150} INFO - {'temp': 85.69, 'feels_like': 85.5}
+[2023-08-07T05:24:51.232+0000] {logging_mixin.py:150} INFO - {'temp': 80.92, 'feels_like': 81.79}
+[2023-08-07T05:24:51.233+0000] {logging_mixin.py:150} INFO - {'temp': 78.76, 'feels_like': 78.76}
+[2023-08-07T05:24:51.234+0000] {logging_mixin.py:150} INFO - {'temp': 75.45, 'feels_like': 75.7}
+[2023-08-07T05:24:51.234+0000] {logging_mixin.py:150} INFO - {'temp': 74.14, 'feels_like': 74.41}
+[2023-08-07T05:24:51.235+0000] {logging_mixin.py:150} INFO - {'temp': 72.91, 'feels_like': 73.15}
+[2023-08-07T05:24:51.236+0000] {logging_mixin.py:150} INFO - {'temp': 71.02, 'feels_like': 71.2}
+[2023-08-07T05:24:51.237+0000] {logging_mixin.py:150} INFO - {'temp': 71.02, 'feels_like': 71.26}
+[2023-08-07T05:24:51.238+0000] {logging_mixin.py:150} INFO - {'temp': 70.02, 'feels_like': 70.25}
+[2023-08-07T05:24:51.239+0000] {logging_mixin.py:150} INFO - {'temp': 76.06, 'feels_like': 76.19}
+[2023-08-07T05:24:51.239+0000] {logging_mixin.py:150} INFO - {'temp': 68.95, 'feels_like': 69.26}
+[2023-08-07T05:24:51.240+0000] {logging_mixin.py:150} INFO - {'temp': 68.97, 'feels_like': 69.19}
+[2023-08-07T05:24:51.241+0000] {logging_mixin.py:150} INFO - {'temp': 70.34, 'feels_like': 70.7}
+[2023-08-07T05:24:51.241+0000] {logging_mixin.py:150} INFO - {'temp': 73.89, 'feels_like': 74.17}
+[2023-08-07T05:24:51.242+0000] {logging_mixin.py:150} INFO - {'temp': 77.72, 'feels_like': 78.24}
+[2023-08-07T05:24:51.243+0000] {logging_mixin.py:150} INFO - {'temp': 82.33, 'feels_like': 84.33}
+[2023-08-07T05:24:51.243+0000] {logging_mixin.py:150} INFO - {'temp': 84.81, 'feels_like': 86.95}
+[2023-08-07T05:24:51.244+0000] {logging_mixin.py:150} INFO - {'temp': 87.12, 'feels_like': 88.36}
+[2023-08-07T05:24:51.244+0000] {logging_mixin.py:150} INFO - {'temp': 90.7, 'feels_like': 92.08}
+[2023-08-07T05:24:51.245+0000] {logging_mixin.py:150} INFO - {'temp': 91.76, 'feels_like': 91.54}
+[2023-08-07T05:24:51.246+0000] {logging_mixin.py:150} INFO - {'temp': 93.29, 'feels_like': 92.03}
+[2023-08-07T05:24:51.247+0000] {logging_mixin.py:150} INFO - {'temp': 92.62, 'feels_like': 91.76}
+[2023-08-07T05:24:51.249+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-08-07T05:24:51.263+0000] {taskinstance.py:1345} INFO - Marking task as SUCCESS. dag_id=7_da_temps, task_id=hit_api, execution_date=20230806T052449, start_date=20230807T052449, end_date=20230807T052451
+[2023-08-07T05:24:51.338+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-08-07T05:24:51.354+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check
