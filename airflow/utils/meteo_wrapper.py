@@ -18,6 +18,11 @@ class HourlyWeatherVariables(Enum):
     PRECIPITATION_PROB = "precipitation_probability"
 
 
+class DailyWeatherVariables(Enum):
+    MAX_TEMP = "temperature_2m_max"
+    MIN_TEMP = "temperature_2m_min"
+
+
 def base_url() -> str:
     return "https://api.open-meteo.com/v1/forecast"
 
@@ -26,15 +31,20 @@ def historical_url() -> str:
     return "https://archive-api.open-meteo.com/v1/era5"
 
 
-def temps_forecast_7da(lat: float = 34.09, long: float = -117.8903) -> dict:
-    query = [
+def hourly_weather_7da(lat: float = 34.09, long: float = -117.8903) -> dict:
+    hourly_query = [
         HourlyWeatherVariables.TEMP,
         HourlyWeatherVariables.APPARENT_TEMP,
         HourlyWeatherVariables.CLOUD_COVER,
         HourlyWeatherVariables.PRECIPITATION_PROB,
         HourlyWeatherVariables.WIND_SPEED_10M,
+        HourlyWeatherVariables.DEWPOINT,
     ]
-    hourly_params = (",").join([i.value for i in query])
+
+    daily_query = [DailyWeatherVariables.MAX_TEMP, DailyWeatherVariables.MIN_TEMP]
+
+    hourly_params = (",").join([i.value for i in hourly_query])
+    daily_params = (",").join([i.value for i in daily_query])
     temp_unit = "fahrenheit"
     timezone = urllib.parse.quote("America/Los_Angeles")
     r = requests.get(
@@ -43,13 +53,15 @@ def temps_forecast_7da(lat: float = 34.09, long: float = -117.8903) -> dict:
             "latitude": lat,
             "longitude": long,
             "hourly": hourly_params,
+            "daily": daily_params,
             "timezone": timezone,
             "temperature_unit": temp_unit,
         },
     )
     request_json = json.loads(r.text)  # type: ignore
     data = request_json["hourly"]
-    print(type(data))
+    print(request_json["hourly"])
+    print(request_json["daily"])
     return data
 
 
