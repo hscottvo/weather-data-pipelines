@@ -1,6 +1,6 @@
+import json
 import os
 import urllib.parse
-import json
 from enum import Enum
 
 import requests
@@ -28,7 +28,7 @@ def base_url() -> str:
 
 
 def historical_url() -> str:
-    return "https://archive-api.open-meteo.com/v1/era5"
+    return "https://archive-api.open-meteo.com/v1/archive"
 
 
 def hourly_weather_7da(lat: float = 34.09, long: float = -117.8903) -> dict:

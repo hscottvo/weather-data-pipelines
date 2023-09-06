@@ -16,7 +16,6 @@ logs/
 db/
 *.db
 *.sqlite
-*.sql
 
 # Ignore system files
 .DS_Store

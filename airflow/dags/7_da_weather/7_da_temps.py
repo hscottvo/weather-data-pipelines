@@ -6,16 +6,17 @@ sys.path.append(os.path.abspath("./"))
 from datetime import datetime, timedelta, timezone
 
 import pandas as pd
-from dotenv import load_dotenv
-
-from airflow import DAG
+import pytz
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.providers.postgres.operators.postgres import PostgresOperator
+from dotenv import load_dotenv
 from utils.cockroach_wrapper import cockroach_connection, df_to_sql
 from utils.meteo_wrapper import hourly_weather_7da
 from utils.util import create_directory
+
+from airflow import DAG
 
 CSV_PATH = "/opt/airflow/tmp/forecast_query_7da.csv"
 
@@ -26,7 +27,7 @@ def hit_open_meteo() -> None:
     df["time"] = pd.to_datetime(df["time"])
     df["forecast_date"] = df["time"].dt.date
     df["hour"] = df["time"].dt.hour + 1
-    df["reference_date"] = datetime.now().date()
+    df["reference_date"] = datetime.now(pytz.timezone("America/Los_Angeles")).date()
     df["time_horizon"] = df.apply(
         lambda row: (row["forecast_date"] - row["reference_date"]).days, axis=1
     )
