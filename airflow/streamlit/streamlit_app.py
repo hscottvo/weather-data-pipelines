@@ -8,11 +8,13 @@ def init_connection():
     return psycopg2.connect(**st.secrets["postgres"])
 
 
-conn = init_connection()
 
 
 @st.cache_data(ttl=600)
 def run_query(query):
+    conn = init_connection()
+    if conn == None:
+        exit(1)
     with conn.cursor() as cur:
         cur.execute(query)
         return cur.fetchall()
