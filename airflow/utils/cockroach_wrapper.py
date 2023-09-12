@@ -15,4 +15,4 @@ def cockroach_connection() -> Engine:
 
 
 def df_to_sql(engine: Engine, df: pd.DataFrame, table: str) -> None:
-    df.to_sql(table, engine, if_exists="replace", index=False)
+    df.to_sql(table, engine, if_exists="append", index=False)
