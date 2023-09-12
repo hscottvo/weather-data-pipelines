@@ -45,9 +45,13 @@ def hit_open_meteo() -> None:
             "windspeed_10m",
             "cloudcover",
         ]
-    ]
-    print(df.dtypes)
-    print(df.head(48)[["reference_date", "forecast_date", "time_horizon"]])
+    ].rename(
+        columns={
+            "apparent_temperature": "apparent_temp",
+            "temperature_2m": "temp_2m",
+            "precipitation_probability": "precip_prob",
+        }
+    )
 
     create_directory("/opt/airflow/tmp")
     df.to_csv(CSV_PATH, index=False)
