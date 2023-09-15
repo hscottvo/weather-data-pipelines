@@ -71,11 +71,10 @@ def export_df():
     engine = cockroach_connection()
 
     df = pd.read_csv(CSV_PATH)
+    print(df)
     if df.empty:
         return
-    if not df_to_sql(engine, df, "weather_historical"):
-        print("failed")
-        exit(-1)
+    df_to_sql(engine, df, "weather_historical")
 
 
 default_args = {
