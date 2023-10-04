@@ -5,12 +5,13 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
 
-load_dotenv(".env")
-
 
 def cockroach_connection() -> Engine:
+    if load_dotenv(".env"):
+        print("Loaded environment variables")
+    else:
+        print("Failed to load environment variables")
     engine = create_engine(os.environ["COCKROACH_ALCHEMY"])
-    print(type(engine))
     return engine  # type: ignore
 
 
