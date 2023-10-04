@@ -81,13 +81,13 @@ default_args = {
     "owner": "scott",
     "retries": 0,
     "retry_delay": timedelta(seconds=2),
-    "schedule_interval": "@daily",
 }
 
 with DAG(
     dag_id="historical_weather",
     default_args=default_args,
     start_date=datetime(2022, 12, 29),
+    schedule_interval="0 2 * * *",
     catchup=False,
 ) as dag:
     create_table = PostgresOperator(

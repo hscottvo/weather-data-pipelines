@@ -71,7 +71,6 @@ default_args = {
     "owner": "scott",
     "retries": 0,
     "retry_delay": timedelta(seconds=2),
-    "schedule_interval": "@daily",
     "retry": False,
 }
 
